@@ -21,7 +21,7 @@ get("button").addEventListener("click", function() {
 
 //add hight scores button
 get("highScr").addEventListener("click", function() {
-    highScrList.innerHTML="<p>"+" : "+"</p>";
+    highScrList.innerHTML='<p>Highest is </p>'+ correct;
 })
 
 
@@ -150,23 +150,23 @@ function getResult() {
     get( "quiz-container" ).innerHTML = "";
     get('rep').innerHTML= "";
     quiz.innerHTML = "<h2> You got "+correct+" of "+myQuestions.length+" question correct </h2>";
-    quizSc.innerHTML= `<p>Your Name:<input id='list' type='text'></input>Your Score: ${correct}</p><button id='submit'>Submit</button>`;
-    
-
+    quizSc.innerHTML= `<p id='A'>Your Name:<input id='list' type='text' value='here'>Your Score: ${correct}</p><button id='submit'>Submit</button>`;
     //saving result by submit button
     document.getElementById("submit").addEventListener("click", function() {
         saveData();
+        printData();
     })
 }
 
-
-// save function
 var userName = document.getElementById("list");
+console.log(username)
+// save function
 function saveData() {
     var userData = {
-        userName,
+        userName: userName,
         userScr : correct,
     };
+    console.log(userData)
     localStorage.setItem("userData", JSON.stringify(userData));
 }
 
